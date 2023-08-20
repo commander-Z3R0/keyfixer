@@ -20,7 +20,7 @@ This script automates the process of resolving the invalid signature error by up
 
 ## How to Use
 
-1. Clone this repository to your local machine:
+Commands to execute the script:
 
    ```sh
    git clone https://github.com/commander-Z3R0/keyfixer.git
