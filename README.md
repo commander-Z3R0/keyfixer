@@ -9,7 +9,7 @@ The Kali Linux Key Fixer is a simple script designed to address the issue of inv
 When updating Kali Linux repositories using the `apt-get update` command, you might encounter the error message: "The following signatures were invalid: EXPKEYSIG ED444FF07D8D0BF6 Kali Linux Repository."
 
 This error occurs due to outdated or invalid GPG keys used to verify the integrity of the packages.
-![image](https://raw.githubusercontent.com/command-Z3R0/keyfixer/main/kali1.png)
+![image](https://raw.githubusercontent.com/commander-Z3R0/keyfixer/main/kali1.png)
 
 
 ## Solution
