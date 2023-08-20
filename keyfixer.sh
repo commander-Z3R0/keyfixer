@@ -40,13 +40,13 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 # Download the .deb key file
-wget https://http.kali.org/kali/pool/main/k/kali-archive-keyring/kali-archive-keyring_2021.1_all.deb &>/dev/null
+wget https://http.kali.org/kali/pool/main/k/kali-archive-keyring/kali-archive-keyring_2022.1_all.deb &>/dev/null
 
 # Install the .deb file
-apt install ./kali-archive-keyring_2021.1_all.deb  &>/dev/null
+apt install ./kali-archive-keyring_2022.1_all.deb  &>/dev/null
 
 # Delete the installed .deb file
-rm kali-archive-keyring_2021.1_all.deb  &>/dev/null
+rm kali-archive-keyring_2022.1_all.deb  &>/dev/null
 
 echo "The process finished successfully."
 
