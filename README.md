@@ -25,3 +25,7 @@ This script automates the process of resolving the invalid signature error by up
    ```sh
    git clone https://github.com/commander-Z3R0/keyfixer.git
    cd keyfixer
+   chmod +x keyfixer.sh
+   ./keyfixer.sh
+   ```
+   
