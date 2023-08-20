@@ -1,8 +1,6 @@
-# keyfixer
-Corrects the issue of invalid signatures: EXPKEYSIG ED444FF07D8D0BF6 from the Kali Linux Repository.
-# Kali Linux Key Fixer
+# keyfixer: Kali Linux Key Fixer
 
-![GitHub](https://img.shields.io/github/license/commander-Z3R0/keyfixer)
+[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://github.com/command-z3r0?tab=repositories)
 
 The Kali Linux Key Fixer is a simple script designed to address the issue of invalid signatures when updating Kali Linux repositories.
 
