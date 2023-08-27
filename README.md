@@ -21,6 +21,15 @@ This script automates the process of resolving the invalid signature error by up
 2. Installs the key file using the `apt` package manager.
 3. Removes the downloaded key file.
 
+Tested on :
+ 
+ :heavy_check_mark: Kali nethunter
+
+
+ :heavy_check_mark: kali linux
+
+
+
 ## How to Use
 
 Commands to execute the script:
