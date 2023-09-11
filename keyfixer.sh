@@ -27,29 +27,58 @@ logo="$b
       !KKKKKKKKKKKqC;-               -;CqKKKKKKKKKKK!
       <KKKKKKKKkr,                       ,rSKKKKKKKK<
        -\"v]qj;-                             -;jq]v\"-
-                       $w[Key-Fixer]$w
-      $d Simple Script to Fix EXPKEYSIG Kali Linux Repo
-                $d Author by $w$r@Commander.Z3R0$w"
+                        $w[Safe_THM]$w
+          $d Configuration iptables for TryHackMe
+                  $d by $w$r@Commander.Z3R0$w"
 
 echo -e "$logo"
 
 # Verify privileges
 if [ "$EUID" -ne 0 ]; then
-  echo "Please execute the script with privileges."
+  echo "   ----> Please execute the script with privileges."
   exit 1
 fi
 
-# Download the .deb key file
-wget https://http.kali.org/kali/pool/main/k/kali-archive-keyring/kali-archive-keyring_2022.1_all.deb &>/dev/null
+# Clear all existing rules and chains
+iptables -F
+iptables -X
 
-# Install the .deb file
-apt install ./kali-archive-keyring_2022.1_all.deb  &>/dev/null
+ip6tables -F
+ip6tables -X
 
-# Delete the installed .deb file
-rm kali-archive-keyring_2022.1_all.deb  &>/dev/null
+# Set default policies
+iptables -P INPUT ACCEPT
+iptables -P FORWARD ACCEPT
+iptables -P OUTPUT ACCEPT
 
-echo "The process finished successfully."
+ip6tables -P INPUT DROP
+ip6tables -P FORWARD DROP
+ip6tables -P OUTPUT DROP
 
+# Flush NAT and Mangle tables
+iptables -t nat -F
+iptables -t mangle -F
 
+ip6tables -t nat -F
+ip6tables -t mangle -F
 
+# Ping machine rules
+iptables -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
+iptables -A INPUT -p icmp --icmp-type echo-reply -j ACCEPT
+iptables -A INPUT -p icmp -j DROP
 
+iptables -A OUTPUT -p icmp --icmp-type echo-request -j ACCEPT
+iptables -A OUTPUT -p icmp --icmp-type echo-reply -j ACCEPT
+iptables -A OUTPUT -p icmp -j DROP
+
+# Allow VPN connection only from specific machine
+iptables -A INPUT -i tun0 -p tcp -s $1 -j ACCEPT
+iptables -A OUTPUT -o tun0 -p tcp -d $1 -j ACCEPT
+iptables -A INPUT -i tun0 -p udp -s $1 -j ACCEPT
+iptables -A OUTPUT -o tun0 -p udp -d $1 -j ACCEPT
+iptables -A INPUT -i tun0 -j DROP
+iptables -A OUTPUT -o tun0 -j DROP
+
+# Save the rules
+iptables-save > /etc/iptables/rules.v4
+ip6tables-save > /etc/iptables/rules.v6
