@@ -35,7 +35,7 @@ echo -e "$logo"
 
 # Verify privileges
 if [ "$EUID" -ne 0 ]; then
-  echo "Please execute the script with privileges."
+  echo "       [!] Please execute the script with privileges."
   exit 1
 fi
 
@@ -48,6 +48,7 @@ apt install ./kali-archive-keyring_2022.1_all.deb  &>/dev/null
 # Delete the installed .deb file
 rm kali-archive-keyring_2022.1_all.deb  &>/dev/null
 
-echo "The process finished successfully."
+echo "          [+] The process finished successfully."
+
 
 
